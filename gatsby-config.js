@@ -1,13 +1,24 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: "Treeify",
   },
   plugins: [
     {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `b3rqbxnojdpk`,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+      },
+    },
+    {
       resolve: "gatsby-source-shopify",
       options: {
-        shopName: "tree-well",
-        accessToken: "fdb9cbd04611b0956fafc414485cec82",
+        shopName: process.env.GATSBY_SHOP_NAME,
+        accessToken: process.env.GATSBY_SHOPIFY_STOREFRONT_TOKEN,
       },
     },
     "gatsby-plugin-sass",

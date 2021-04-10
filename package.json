@@ -15,18 +15,23 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@react-three/drei": "^4.1.4",
+    "@react-three/fiber": "^6.0.10",
     "gatsby": "^3.1.1",
     "gatsby-plugin-image": "^1.1.2",
     "gatsby-plugin-react-helmet": "^4.1.0",
     "gatsby-plugin-sass": "^4.1.0",
     "gatsby-plugin-sharp": "^3.1.2",
     "gatsby-plugin-sitemap": "^3.1.0",
+    "gatsby-source-contentful": "^5.2.0",
     "gatsby-source-filesystem": "^3.1.0",
     "gatsby-source-shopify": "^4.1.0",
     "gatsby-transformer-sharp": "^3.1.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
-    "sass": "^1.32.8"
+    "sass": "^1.32.8",
+    "shopify-buy": "^2.11.0",
+    "three": "^0.127.0"
   }
 }
