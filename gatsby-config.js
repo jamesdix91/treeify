@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: "Treeify",
-    siteUrl: 'treeify.netlify.com'
+    siteUrl: 'https://treeify.netlify.com'
   },
   plugins: [
     {
