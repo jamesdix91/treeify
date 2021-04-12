@@ -1,7 +1,4 @@
-$day: #97c9ec;
-$night: #0b0c30;
-
-$desktop: 728px;
+@import "variables";
 
 * {
   box-sizing: border-box;
@@ -54,6 +51,7 @@ section {
   grid-gap: 20px;
   color: white;
   transition: all 1s linear;
+  overflow: hidden;
 }
 
 .page.dark {
@@ -161,9 +159,9 @@ h1 span {
 
 .header p {
   color: #241e5f;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  margin-top: 40px;
+  letter-spacing: 0.0em;
+  margin: 40px 15px;
+  
 }
 
 nav {
@@ -179,6 +177,28 @@ nav.full-width {
 
 .social {
   margin-right: 10px;
+}
+
+.toggle-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  height: 60px;
+  width: 60px;
+  margin-top: 10px;
+  margin-left: 10px;
+  
+  span {
+    position: relative;
+    bottom: 5px;
+    font-size: 0.6em;
+    color: $night;
+    transition: all 1s ease;
+  }
+}
+
+.dark .toggle-container span {
+  color: $white;
 }
 
 .social div {
@@ -252,6 +272,10 @@ img {
     margin-left: 100px;
     grid-row: 1 / -1;
     text-align: left;
+
+    p {
+      margin: 0 15px;
+    }
   }
 
   .canvas {

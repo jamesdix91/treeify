@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Earth from '../components/earth.js';
 import BurgerMenu from '../components/burger-menu.js';
+import Toggle from "../components/toggle.js";
 import '../styles/index.scss';
 import instagram from '../logos/instagram.png';
 import linkedin from '../logos/linkedin.png';
@@ -49,6 +50,10 @@ const IndexPage = () => {
         </div>
       </nav>
       <nav className="mobile-only">
+        <div className="toggle-container">
+          <Toggle onToggle={() => setDark(!dark)} />
+          <span>Dark Mode</span>
+        </div>
         <BurgerMenu sections={links} />
       </nav>
 

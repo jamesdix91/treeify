@@ -1,0 +1,40 @@
+@import 'variables';
+
+$toggle-height: 50px;
+
+.toggle {
+    border-radius: $toggle-height/2;
+    width: $toggle-height;
+    border: 2px solid $night;
+
+    input {
+        position: relative;
+        bottom: 1px;
+        left: 1px;
+        height: $toggle-height * 0.45;
+        width: $toggle-height * 0.45;
+        border-radius: $toggle-height * 0.45;
+        background-color: $night;
+        border: 2px solid $night;
+        transition: all 1s ease;
+
+        &:focus {
+            outline: 0;
+        }
+    }
+
+    &.right input {
+        left: $toggle-height * 0.4
+    }
+}
+
+.dark .toggle {
+    border: 2px solid $white;
+
+    input {
+        background-color: $white;
+        border: 2px solid $white;
+    }
+}
+
+

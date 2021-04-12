@@ -1,18 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../styles/burger-menu.scss";
 
 const BurgerMenu = (props) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [interacted, setInteracted] = useState(false);
 
     const handleClick = () => {
+        if (!interacted) setInteracted(prev => !prev)
         setIsOpen(prev => !prev)
     }
 
     return (
         <nav className="burger-menu-container">
-            <div className={`burger-menu ${isOpen ? 'expanded' : 'collapsed'}`}>
-                <div className="vertical-list">
+            <div className={`burger-menu ${interacted ? (isOpen ? 'expanded' : 'collapsed') : ''}`}>
+                <div className="vertical-list links">
                     {props.sections.map(link => {
                         return <span><a href={link.url}>{link.text}</a></span>
                     })}

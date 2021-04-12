@@ -84,6 +84,4 @@ const content = await graphql(`
 
   })
 
-
-
 }
