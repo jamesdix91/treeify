@@ -1,4 +1,5 @@
 @import "variables";
+@import "burger-menu";
 
 * {
   box-sizing: border-box;
@@ -6,10 +7,19 @@
 
 body {
   margin: 0;
-  font-family: Poppins-Regular;
+  font-family: Arvo;
+  font-weight: 100;
+  line-height: 1.5;
+  color: $black;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   font-size: 16px;
+}
+
+h1,h2,
+h3,h4,
+h5,h6 {
+  font-family: Recoleta-Bold;
 }
 
 code {
@@ -34,24 +44,17 @@ code {
     url("../fonts/Poppins-Regular.woff2") format("woff2");
 }
 
-section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
+@font-face {
+  font-family: New-Sun-Regular;
+  src: url("../fonts/New-Sun-Regular.woff2") format("woff2"),
+    url("../fonts/New-Sun-Regular.woff") format("woff");
 }
 
-.page {
-  position: relative;
-  background-color: $day;
-  width: 100vw;
-  height: 100vh;
+main {
   display: grid;
   grid-template-columns: 1fr;
-  padding: 0 0;
-  grid-gap: 20px;
-  color: white;
-  transition: all 1s linear;
-  overflow: hidden;
+  margin: 0 auto;
+  max-width: 1200px;
 }
 
 .page.dark {
@@ -69,27 +72,50 @@ section {
 }
 
 .links a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
-.overlay,
-.logo,
-.header p {
-  transition: all 1s linear;
+a {
+  text-decoration: none;
+  color: unset;
+  font-family: Arvo;
+  font-weight: 100;
 }
 
-.overlay {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  top: 0;
-  pointer-events: none;
-  background-image: url("../images/stars-layer.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: 0;
+nav {
+  color: $night;
+  width: 100%;
+  z-index: 1;
+
+  .logo a {
+    color: $night;
+    font-family: Recoleta-Bold;
+  }
+
+  .links a {
+    color: $night;
+  }
+
+  .burger-icon .line {
+    background: $night;
+  }
+
+  img {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(53%) saturate(1973%) hue-rotate(218deg) brightness(87%) contrast(105%);
+  }
+}
+
+button {
+  width: fit-content;
+  padding: 9px 32px;
+  background: $night;
+  color: $white;
+  font-size: 1em;
+  border: 0;
+  border-radius: 3px;  
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .col-1 {
@@ -140,32 +166,17 @@ section {
   display: none;
 }
 
-h1 {
-  font-family: Recoleta-Bold;
-  font-size: 5em;
-  margin: 0;
-  line-height: 0.8em;
-}
-
-h1 span {
-  color: #ff5f58;
-}
-
-.header {
-  margin: auto;
-  text-align: center;
-  grid-row: 1 / -1;
-}
-
-.header p {
-  color: #241e5f;
-  letter-spacing: 0.0em;
-  margin: 40px 15px;
-  
-}
-
 nav {
   height: 100px;
+  &.index {
+    background: $day;
+  }
+
+  &.mobile-only {
+    padding-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
 }
 
 nav.full-width {
@@ -185,9 +196,9 @@ nav.full-width {
   align-items: flex-start;
   height: 60px;
   width: 60px;
-  margin-top: 10px;
+  padding-top: 3px;
   margin-left: 10px;
-  
+
   span {
     position: relative;
     bottom: 5px;
@@ -230,74 +241,50 @@ img {
   color: #241e5f;
 }
 
-.canvas {
-  position: relative;
-  top: 50px;
-  height: 600px;
+.page-width {
+  width: 100%;
+  padding: 0 10px;
 }
 
-@media only screen and (min-width: $desktop) {
-  .page {
-    padding: 0 0;
-    grid-template-columns: repeat(6, calc(16.6% - 20px));
-    grid-template-rows: 70px 1fr;
-    min-height: 100vh;
-    max-height: 800px;
-  }
-
-  section {
+@media screen and (min-width: $desktop) {
+  nav {
     display: grid;
     grid-template-columns: repeat(6, 16.6%);
-    position: relative;
+    border-bottom: 1px solid $light-grey;
+    &.index {
+      border-bottom: 0;
+    }
+
+    .logo {
+      margin-left: 20px;
+    }
   }
 
-  h1 {
-    font-size: 6em;
-  }
+  main {
+    grid-template-columns: repeat(12, 1fr);
+    grid-gap: 20px;
+    padding-top: 75px;
 
-  nav {
-      display: grid;
-      grid-template-columns: repeat(6, 16.6%);
-
-      .logo {
-          margin-left: 20px;
-      }
+    &.index {
+      padding-top: 0;
+      height: calc(100vh - 75px)
+    }
   }
 
   nav.full-width {
     display: flex;
   }
 
-  .header {
-    margin-left: 100px;
-    grid-row: 1 / -1;
-    text-align: left;
-
-    p {
-      margin: 0 15px;
-    }
-  }
-
-  .canvas {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    justify-self: center;
-    align-self: center;
-
-    & > div {
-      height: 75% !important;
-    }
-  }
-
   .mobile-only {
-    display: none;
+    display: none !important;
   }
 
   .desktop-only {
     display: block;
+  }
+
+  .page-width {
+    width: 1000px;
+    margin: 0 auto;
   }
 }

@@ -9,6 +9,16 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: 'gatsby-source-prismic',
+      options: {
+        repositoryName: 'https://treeify.prismic.io',
+        accessToken: process.env.GATSBY_PRISMIC_ACCESS_TOKEN,
+        schemas: {
+           general_content: require("./prismic/custom_types/general_content.json")
+        },
+      },
+    },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: `b3rqbxnojdpk`,

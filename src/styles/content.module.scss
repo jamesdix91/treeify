@@ -1,0 +1,36 @@
+@import "variables";
+
+.content {
+    text-align: left;
+    margin: 0 10px;
+
+    h1 {
+        font-size: 3.5em;
+        font-weight: 100;
+        text-align: center;
+        margin: 50px auto;
+        font-family: New-Sun-Regular;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+
+    img {
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+
+
+@media only screen and (min-width: $desktop) {
+
+    .content {
+        width: 700px;
+        font-size: 1.1em;
+        margin: 0 auto;
+        grid-column: 3/-3;
+    }
+
+}

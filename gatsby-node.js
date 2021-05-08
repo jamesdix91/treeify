@@ -11,6 +11,15 @@ exports.createPages = async ({graphql, actions }) => {
             title
             images {
               originalSrc
+              localFile {
+                childImageSharp {
+                gatsbyImageData(
+                 height: 400
+                 placeholder: BLURRED
+                 formats: [AUTO, WEBP, AVIF]
+                 )
+                }
+              }
             }
             shopifyId
             handle
@@ -40,7 +49,7 @@ exports.createPages = async ({graphql, actions }) => {
   // The product "handle" is generated automatically by Shopify
   shopifyProducts.data.allShopifyProduct.edges.forEach(({ node }) => {
     createPage({
-      path: `/products/${node.handle}`,
+      path: `/trees/${node.handle}`,
       component: path.resolve(`./src/templates/product.js`),
       context: {
         product: node,
@@ -48,40 +57,30 @@ exports.createPages = async ({graphql, actions }) => {
     })
   })
 
-  // Contentful pages
+  // Prismic pages
 
-const content = await graphql(`
-  query {
-    allContentfulSimpleContent {
-      edges {
-        node {
-          bodyRichText {
-            raw
-            references {
-              ... on ContentfulAsset {
-                 contentful_id
-                 fluid {
-                  src
-                }
-              }
+  const content = await graphql(`
+    query {
+      allPrismicGeneralContent {
+        nodes {
+          data {
+            body {
+              raw
             }
           }
-          title
-          slug
+          uid
         }
       }
     }
-  }
-`)
+  `)
 
-  content.data.allContentfulSimpleContent.edges.forEach(({ node }) => {
+  content.data.allPrismicGeneralContent.nodes.forEach(page => {
 
     createPage({
-      path: `/${node.slug}`,
+      path: `/${page.uid}`,
       component: path.resolve(`./src/templates/content.js`),
-      context: node
+      context: { ...page }
     })
-
   })
 
 }

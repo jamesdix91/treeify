@@ -16,7 +16,7 @@ const BurgerMenu = (props) => {
             <div className={`burger-menu ${interacted ? (isOpen ? 'expanded' : 'collapsed') : ''}`}>
                 <div className="vertical-list links">
                     {props.sections.map(link => {
-                        return <span><a href={link.url}>{link.text}</a></span>
+                        return <span key={link.text}><a href={link.url}>{link.text}</a></span>
                     })}
                 </div>
             </div>

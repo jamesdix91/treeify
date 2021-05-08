@@ -1,0 +1,133 @@
+@import 'variables'; 
+
+section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.page {
+  position: relative;
+  background-color: $day;
+  width: 100vw;
+  height: calc(100vh - 100px);
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0 0;
+  grid-gap: 20px;
+  color: white;
+  transition: all 1s linear;
+  overflow: hidden;
+}
+
+.overlay,
+.logo,
+.header p {
+  transition: all 1s linear;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  pointer-events: none;
+  background-image: url("../images/stars-layer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+.header {
+  margin: auto;
+  text-align: center;
+  grid-row: 1 / -1;
+
+  h1 {
+    font-family: Recoleta-Bold;
+    font-size: 5em;
+    margin: 0;
+    line-height: 0.8em;
+  }
+  
+  h1 span {
+    color: $action;
+  }
+}
+
+.header p {
+  color: #241e5f;
+  letter-spacing: 0.0em;
+  margin: 40px 15px; 
+}
+
+button {
+  font-size: 1.2em;
+  font-weight: 900;
+  padding: 12px 42px;
+  margin: 25px auto;
+  background: linear-gradient(149deg, #0b0c30, #7a4c99);
+  background-size: 300%;
+
+  -webkit-animation: GradientMove 20s ease infinite;
+  -moz-animation: GradientMove 20s ease infinite;
+  animation: GradientMove 20s ease infinite;
+
+  &:hover {
+    box-shadow: 0px 7px 23px 1px rgba(77, 34, 60, 67%);
+  }
+}
+
+@media only screen and (min-width: $desktop) {
+  .page {
+    padding: 70px 0 0;
+    grid-template-columns: repeat(6, calc(16.6% - 20px));
+    grid-template-rows: 1fr;
+    max-height: 800px;
+    height: auto;
+  }
+
+  section {
+    display: grid;
+    grid-template-columns: repeat(6, 16.6%);
+    position: relative;
+  }
+
+  button {
+    margin: 25px 0;
+  }
+
+  .header {
+    margin-left: 100px;
+    margin-top: 80px;
+    grid-row: 1 / -1;
+
+    h1 {
+      font-size: 6em;
+      text-align: left;
+    }
+
+    p {
+      margin: 20px 0;
+      text-align: left;
+    }
+  }
+}
+
+@-webkit-keyframes GradientMove {
+    0%{background-position:0% 22%}
+    50%{background-position:50% 79%}
+    100%{background-position:0% 22%}
+}
+@-moz-keyframes GradientMove {
+    0%{background-position:0% 22%}
+    50%{background-position:50% 79%}
+    100%{background-position:0% 22%}
+}
+@keyframes GradientMove {
+    0%{background-position:0% 22%}
+    50%{background-position:50% 79%}
+    100%{background-position:0% 22%}
+}
